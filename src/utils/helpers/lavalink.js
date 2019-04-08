@@ -26,7 +26,7 @@ module.exports.play = async(client, message, args) => {
     let queue = this.getCurrentQueue(client.config.LAVALINK.QUEUES, message.guild.id);
     if (queue.length === 0) {
         await client.player.leave(message.guild.id);
-        return message.channel.send('La queue est terminée. 👌');
+        return message.channel.send('La file d\'attente est terminée. 👌');
     }
         const track = args;
         const [song] = await this.getSongs(client.player, `ytsearch: ${track}`);
@@ -40,14 +40,14 @@ module.exports.play = async(client, message, args) => {
             if (!player) { return message.channel.send('❌ Le bot ne peut pas rejoindre ce salon.'); }
                 player.play(song.track);
                 player.on('error', (error) => {
-                    if (error) { message.channel.send('❌ Une erreur est survenue, essai plus tard.\n```JS\n' + error.message + '```'); }
+                    if (error) { message.channel.send('❌ Une erreur est survenue, nous sommes désolé. Ressayez plus tard.\n```JS\n' + error.message + '```'); }
                 });
                 player.on('end', async (data) => {
                     if (data.reason === 'REPLACED') { return; }
                     if (queue.length === 0 && data.reason === 'STOPPED') { return; }
                     else if (queue.length === 0) {
                         await client.player.leave(message.guild.id);
-                        return message.channel.send('la queue est terminée. 👌');
+                        return message.channel.send('La file d\'attente est terminée. 👌');
                     }
                     else {
                         let nextSong = (queue.length > 1 ? queue[1].track : queue[0].track);
