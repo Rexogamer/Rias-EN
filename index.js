@@ -38,7 +38,7 @@ class Bot extends Client {
               this.logger.log(`Commande | ${command.help.name} chargée !`);
 
             if (command && command.help.aliases) {
-              for (let i = 0; i < command.help.aliases.length; i++) { this.aliases.set(command.help.aliases[i], command);}
+              for (let i = 0; i < command.help.aliases.length; i++) { this.aliases.set(command.help.aliases[i], command); }
             }
         }
     });
