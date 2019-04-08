@@ -1,0 +1,25 @@
+{
+  "name": "Rias",
+  "version": "1.0.0-dev",
+  "description": "Bot musical créé par Sworder",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "music",
+    "lavalink"
+  ],
+  "author": "Sworder",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "asciiart-logo": "^0.2.6",
+    "chalk": "^2.4.2",
+    "discord.js": "^11.4.2",
+    "discord.js-lavalink": "^2.2.2",
+    "fs": "0.0.1-security",
+    "node-fetch": "^2.3.0"
+  }
+}
