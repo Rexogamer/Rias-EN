@@ -21,9 +21,12 @@ class Volume extends Command {
         if (!player) { return message.channel.send('❌  Le bot ne joue actuellement pas.'); }
         if (!volume || isNaN(volume)) { return message.channel.send('❌  Vous devez spécifier un nombre compris entre **1** et **100** pour ajuster le volume.'); }
         else if (volume <= 0 || volume > 100) { return message.channel.send('❌  Vous devez spécifier un nombre compris entre **1** et **100** pour ajuster le volume.'); }
-            let vol = await player.volume(volume);
-            return message.channel.send('🔊 Le volume du stream est désormais à **' + vol.state.volume + '**.');
-
+            try {
+                let vol = await player.volume(volume);
+                return message.channel.send('🔊 Le volume du stream est désormais à **' + vol.state.volume + '**.');
+            } catch (exception) {
+                if (exception) { return message.channel.send('❌ Une erreur est survenue, nous sommes désolé. Essayez plus tard.\n```JS\n' + exception.message + '```'); }
+            }    
     }
 }
 
