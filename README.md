@@ -33,3 +33,13 @@ java -jar Lavalink.jar
 ```
 pm2 start java --name="Lavalink" -- -jar Lavalink.jar
 ```
+
+## Images
+
+<p align="center">
+   <img src="https://cdn.discordapp.com/attachments/472140661685092372/564917193171664906/unknown.png" />
+   <br/>
+   <img src="https://cdn.discordapp.com/attachments/459373842327011344/564918084377247796/unknown.png" />
+   <br/>
+   <img src="https://cdn.discordapp.com/attachments/459373842327011344/564918376237891584/unknown.png" />
+</p>
