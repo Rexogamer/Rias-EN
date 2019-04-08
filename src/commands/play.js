@@ -15,7 +15,7 @@ class Play extends Command {
         };
     }
 
-    async run(client, message, args) {
+    run(client, message, args) {
         let queue = LavalinkFunctions.getCurrentQueue(client.config.LAVALINK.QUEUES, message.guild.id);
         if (!message.member || !message.member.voiceChannel) { return message.channel.send('❌ Vous devez être connecté dans un salon vocal pour faire cette commande.'); }
             const track = args.join(' ');
