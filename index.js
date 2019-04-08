@@ -3,7 +3,6 @@
 const { Client, Collection } = require('discord.js');
 const { PlayerManager } = require('discord.js-lavalink');
 const fs = require('fs');
-const logger = require('./src/utils/helpers/logger');
 
 class Bot extends Client {
   constructor() {
@@ -15,7 +14,7 @@ class Bot extends Client {
       user: this.config.BOT.ID,
       shards: 0
     });
-    this.logger = new logger(this);
+    this.logger = require('./src/utils/helpers/logger');
     this.launch();
   }
 
