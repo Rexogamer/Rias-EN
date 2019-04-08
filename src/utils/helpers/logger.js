@@ -10,24 +10,20 @@ function resolveNum(num) {
     }
 }
 
-module.exports = class Logger {
-  constructor(client) { this.client = client; }
-
-  warn(text) {
+module.exports.warn = (text) => {
     let date = new Date();
     if (!text) { return console.log(`[${chalk.keyword("green")(resolveNum(date.getDate())+"/"+resolveNum(date.getMonth()+1)+"/"+date.getFullYear())}] [${chalk.keyword("orange")("Warn")}] Vous devez inclure un texte pour afficher un warn`); }
       return console.log(`[${chalk.keyword("green")(resolveNum(date.getDate())+"/"+resolveNum(date.getMonth()+1)+"/"+date.getFullYear())}] [${chalk.keyword("orange")("Warn")}] ${text}`);
-  }
+};
 
-  log(text) {    
+module.exports.log = (text) => {    
     let date = new Date();
     if (!text) { return console.log(`[${chalk.keyword("green")(resolveNum(date.getDate())+"/"+resolveNum(date.getMonth()+1)+"/"+date.getFullYear())}] [${chalk.keyword("orange")("Warn")}] Vous devez inclure un texte pour afficher un log`); }
       return console.log(`[${chalk.keyword("green")(resolveNum(date.getDate())+"/"+resolveNum(date.getMonth()+1)+"/"+date.getFullYear())}] [${chalk.keyword("magenta")("Info")}] ${text}`);
-  }
+};
 
-  error(text) {    
+module.exports.error = (text) => {    
     let date = new Date();
     if (!text) { return console.log(`[${chalk.keyword("green")(resolveNum(date.getDate())+"/"+resolveNum(date.getMonth()+1)+"/"+date.getFullYear())}] [${chalk.keyword("orange")("Warn")}] Vous devez inclure un texte pour afficher une erreur`); }
       return console.log(`[${chalk.keyword("green")(resolveNum(date.getDate())+"/"+resolveNum(date.getMonth()+1)+"/"+date.getFullYear())}] [${chalk.keyword("red")("Error")}] ${text}`);
-  }
 };
