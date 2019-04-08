@@ -19,11 +19,9 @@ class Resume extends Command {
     async run(client, message, _args) {
         const player = client.player.get(message.guild.id);
         if (!player) { return message.channel.send('❌ Le bot ne joue actuellement pas.'); }
-        if (player.playing) { return message.channel.send('❌ Le bot joue déjà.'); }
             try {
                 await player.pause(false);
-                return message.channel.send('⏸ La musique est de nouveau en mode play.');
-
+                return message.channel.send('▶ La musique est de nouveau en mode play.');
             } catch (exception) {
                 if (exception) { return message.channel.send('❌ Une erreur est survenue, nous sommes désolé. Essayez plus tard.\n```JS\n' + exception.message + '```'); }
             }
