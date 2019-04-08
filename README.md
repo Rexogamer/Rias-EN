@@ -4,7 +4,7 @@ Bot musical créé par **Sworder** avec **Lavalink** et **Discord.js-lavalink**
 # Installation 
 
 1) Intaller le serveur de **Lavalink**.
-2) compléter le fichier `config.js`.
+2) Compléter le fichier `config.js`.
 3) Installer tout les paquets npm.
 4) Démarrer le fichier le bot avec le fichier `index.js`.
 
