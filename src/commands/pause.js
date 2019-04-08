@@ -20,8 +20,12 @@ class Pause extends Command {
         const player = client.player.get(message.guild.id);
         if (!player) { return message.channel.send('❌  Le bot ne joue actuellement pas.'); }
         if (!player.playing) { return message.channel.send('❌  Le bot ne joue actuellement pas.'); }
-            await player.pause(true);
-            return message.channel.send('⏸ La musique est en pause.');
+            try {
+                await player.pause(true);
+                return message.channel.send('⏸ La musique est en pause.');
+            } catch (exception) {
+                if (exception) { return message.channel.send('❌ Une erreur est survenue, nous sommes désolé. Essayez plus tard.\n```JS\n' + exception.message + '```'); }
+            }
     }
 }
 
