@@ -9,9 +9,9 @@ module.exports.getSongs = (player, search) => {
     params.append('identifier', search);
 
     return fetch(`http://${node.host}:${node.port}/loadtracks?${params.toString()}`, { headers: { Authorization: node.password } })
-        .then(res => res.json())
-        .then(data => data.tracks)
-        .catch(err => {
+        .then((res) => res.json())
+        .then((data) => data.tracks)
+        .catch((err) => {
             console.error(err);
             return null;
         });
@@ -28,21 +28,17 @@ module.exports.play = async(client, message, args) => {
         await client.player.leave(message.guild.id);
         return message.channel.send('La queue est terminée. 👌');
     }
-
         const track = args;
         const [song] = await this.getSongs(client.player, `ytsearch: ${track}`);
-        if (!song) { return message.channel.send('❌  Aucune musique de trouvé !'); }
-
+        if (!song) { return message.channel.send('❌ Aucune musique de trouvé !'); }
             const player = await client.player.join({
                 guild: message.guild.id,
                 channel: message.member.voiceChannel.id,
                 host: client.player.nodes.first().host
             }, { selfdeaf: true });
 
-            if (!player) { return message.channel.send('❌  Le bot ne peut pas rejoindre ce salon.'); }
-
+            if (!player) { return message.channel.send('❌ Le bot ne peut pas rejoindre ce salon.'); }
                 player.play(song.track);
-
                 player.on('error', (error) => {
                     if (error) { message.channel.send('❌ Une erreur est survenue, essai plus tard.\n```JS\n' + error.message + '```'); }
                 });
@@ -59,6 +55,5 @@ module.exports.play = async(client, message, args) => {
                         this.play(client, message, nextSong);
                     }
                 });
-
                 return message.channel.send(`🎶 Nouvelle lecture: **${song.info.title}** par **${song.info.author}**. 🎶`);
 };
