@@ -20,8 +20,12 @@ class Leave extends Command {
         let queue = LavalinkFunctions.getCurrentQueue(client.config.LAVALINK.QUEUES, message.guild.id);
         if (!client.player.get(message.guild.id)) { return message.channel.send('❌ Le bot n\'est actuellement pas connecté dans un salon vocal.'); }
         if (queue.length > 0) { queue.splice(0, queue.length); }
-            await client.player.leave(message.guild.id);
-            return message.channel.send('Le bot a bien quitté le salon vocal. 👌');
+            try {
+                await client.player.leave(message.guild.id);
+                return message.channel.send('Le bot a bien quitté le salon vocal. 👌');
+            } catch (exception) {
+                if (exception) { return message.channel.send('❌ Une erreur est survenue, nous sommes désolé. Essayez plus tard.\n```JS\n' + exception.message + '```'); }
+            }
     }
 }
 
