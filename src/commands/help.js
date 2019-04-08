@@ -16,7 +16,7 @@ class Help extends Command {
     }
 
     // eslint-disable-next-line no-unused-vars
-    async run(client, message, _args) {
+    run(client, message, _args) {
         let commands = client.commands.map((c) => '`' + c.help.name + '`' + ' - ' + c.help.description).join('\n');
         return message.channel.send('Voici la liste de mes commandes 😄\n\n' + commands);
     }
