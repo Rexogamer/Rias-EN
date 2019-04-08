@@ -21,7 +21,7 @@ class Play extends Command {
             const track = args.join(' ');
             if (queue.length > 0) {
                 queue.push({ track, author: message.author.tag });
-                message.channel.send('☑ **' + track + '** à été ajouté avec succès à la queue !');
+                message.channel.send('☑ **' + track + '** a été ajouté avec succès à la queue !');
             } else {
                 queue.push({ track, author: message.author.tag });
                 LavalinkFunctions.play(client, message, track);
