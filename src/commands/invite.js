@@ -16,7 +16,7 @@ class Invite extends Command {
 
   // eslint-disable-next-line no-unused-vars
   run(client, message, _args) {
-    message.channel.send(`Lien: https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=-1`);
+    message.channel.send(`🔗 Voici mon lien d\'invitation: <https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=36719872>`);
   }
 }
 
