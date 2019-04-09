@@ -1,5 +1,5 @@
 # Lavalink Bot
-Alias **Rias**, Bot musical créé par **Sworder** avec **Lavalink** et **Discord.js-lavalink**
+Alias **Rias**, bot musical créé par **Sworder** avec **Lavalink** et **Discord.js-lavalink**
 
 # Installation 
 
