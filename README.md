@@ -1,7 +1,7 @@
 # Lavalink Bot
 Alias **Rias**, bot musical créé par **Sworder** avec **Lavalink** et **Discord.js-lavalink**
 
-# Installation 
+## Installation 
 
 1) Installer le serveur de **Lavalink**.
    - 1) Télécharger le serveur en [cliquant-ici](https://github.com/Frederikam/Lavalink/releases/download/3.2.0.3/Lavalink.jar).
