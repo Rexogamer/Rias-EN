@@ -45,10 +45,7 @@ module.exports.play = async(client, message, args) => {
                 player.on('end', async (data) => {
                     if (data.reason === 'REPLACED') { return; }
                     if (queue.length === 0 && data.reason === 'STOPPED') { return; }
-                    else if (queue.length === 0) {
-                        await client.player.leave(message.guild.id);
-                        return message.channel.send('La file d\'attente est terminée. 👌');
-                    }
+                    else if (queue.length === 0) { return; }
                     else {
                         let nextSong = (queue.length > 1 ? queue[1].track : queue[0].track);
                         queue.shift();
