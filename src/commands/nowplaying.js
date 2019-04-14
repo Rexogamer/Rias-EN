@@ -26,9 +26,9 @@ class Nowplaying extends Command {
         try {
             let duration = moment.duration({ ms: client.config.LAVALINK.QUEUES[message.guild.id][0].info.duration });
             let progression = moment.duration({ ms: client.player.get(message.guild.id).state.position * 1000 });
-            let progress = ['▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬'];
+            let progressBar = ['▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬'];
             let calcul = Math.round(progress.length * ((progression / 1000 / 1000) / (duration / 1000)));
-            progress[calcul] = '🔘';
+            progressBar[calcul] = '🔘';
 
             return message.channel.send({
                 embed: {
@@ -42,7 +42,7 @@ class Nowplaying extends Command {
                         },
                         {
                             name: 'Durée:',
-                            value: '[`' + moment(progression/1000).minutes() + ':' + moment(progression/1000).seconds() + '`] ' + progress.join("") +  ' [`' + duration.minutes() + ':' + duration.seconds() + '`]',
+                            value: '[`' + moment(progression/1000).minutes() + ':' + moment(progression/1000).seconds() + '`] ' + progressBar.join("") +  ' [`' + duration.minutes() + ':' + duration.seconds() + '`]',
                             inline: false
                         }
                     ]
