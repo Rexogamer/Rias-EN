@@ -20,6 +20,7 @@
     "discord.js": "^11.4.2",
     "discord.js-lavalink": "^2.2.2",
     "fs": "0.0.1-security",
+    "moment": "^2.24.0",
     "node-fetch": "^2.3.0"
   }
 }
