@@ -25,9 +25,7 @@ module.exports.getCurrentQueue = (queues, guildID) => {
 module.exports.play = (client, message) => {
     try {
         let queue = this.getCurrentQueue(client.config.LAVALINK.QUEUES, message.guild.id);
-        if (queue.length === 0) {
-            return client.player.leave(message.guild.id);
-        }
+        if (queue.length === 0) { return client.player.leave(message.guild.id); }
             const player = client.player.get(message.guild.id);
             let currentTrack = queue[0];
             if (!player) { return message.channel.send('❌ Le bot n\'est pas connnecté.'); }
