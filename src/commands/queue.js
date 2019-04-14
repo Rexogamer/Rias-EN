@@ -20,7 +20,7 @@ class Queue extends Command {
         let queue = LavalinkFunctions.getCurrentQueue(client.config.LAVALINK.QUEUES, message.guild.id);
         if (!client.player.get(message.guild.id)) { return message.channel.send('❌ Le bot n\'est actuellement pas connecté dans un salon vocal.'); }
         if (queue.length === 0) { return message.channel.send('❌ La queue est vide.'); }
-            let text = queue.slice(0, 15).map((song, i) => '[**' + i + '**] - **' + song.info.title + '**' + ' - Added by **' + song.author + '**').join('\n');
+            let text = queue.slice(0, 15).map((song, i) => '[**' + (i+1) + '**] - **' + song.info.title + '**' + ' - Added by **' + song.author + '**').join('\n');
             message.channel.send('Voici la liste des musiques en attente du serveur:\n\n' + (queue.length === 1 ? '**La queue est vide !**' : text + (queue.length > 15 ? '\n\nEt plus encore...' : '')) + '\n\nLecture actuelle: **' + queue[0].info.title + '** - Ajoutée par **' + queue[0].author + '**')
                 .catch((err) => {
                     if (err) { return message.channel.send('❌ Une erreur est survenue, nous sommes désolé. Essayez plus tard.\n```JS\n' + err.message + '```'); }
