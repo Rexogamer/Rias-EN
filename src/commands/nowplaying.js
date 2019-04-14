@@ -42,7 +42,7 @@ class Nowplaying extends Command {
                         },
                         {
                             name: 'Durée:',
-                            value: '[`' + moment(progression/1000).minutes() + ':' + moment(progression/1000).seconds() + '`] ' + progressBar.join("") +  ' [`' + duration.minutes() + ':' + duration.seconds() + '`]',
+                            value: '[`' + moment(progression/1000).minutes() + ':' + moment(progression/1000).seconds() + '`] ' + progressBar.join('') +  ' [`' + duration.minutes() + ':' + duration.seconds() + '`]',
                             inline: false
                         }
                     ]
