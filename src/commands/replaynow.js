@@ -31,7 +31,7 @@ class Replaynow extends Command {
                             player.stop();
                             setTimeout(() => {
                                 queue[0].loop = false;
-                            }, 1000)
+                            }, 1000);
                         }
                     } catch (exception) {
                         if (exception) { return message.channel.send('❌ Une erreur est survenue, nous sommes désolé. Essayez plus tard.\n```JS\n' + exception.message + '```'); }
