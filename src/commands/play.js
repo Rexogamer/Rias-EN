@@ -1,7 +1,7 @@
 'use strict';
 
 const Command = require('../structures/Command');
-const LavalinkFunctions = require('../utils/helpers/lavalink');
+const { addToQueue } = require('../utils/helpers/lavalink');
 
 class Play extends Command {
     constructor() {
@@ -21,7 +21,7 @@ class Play extends Command {
             const track = args.join(' ');
             if (!player) { return message.channel.send('❌ Le bot doit être connecté dans un salon-vocal avant.'); }
             if (!track) { return message.channel.send('❌ Vous devez spécifier un nom de musique.'); }
-                LavalinkFunctions.addToQueue(client, message, track);
+                addToQueue(client, message, track);
     }
 }
 
