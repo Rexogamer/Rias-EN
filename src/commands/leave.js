@@ -1,7 +1,7 @@
 'use strict';
 
 const Command = require('../structures/Command');
-const LavalinkFunctions = require('../utils/helpers/lavalink');
+const { getCurrentQueue } = require('../utils/helpers/lavalink');
 
 class Leave extends Command {
     constructor() {
@@ -17,7 +17,7 @@ class Leave extends Command {
 
     // eslint-disable-next-line no-unused-vars
     async run(client, message, _args) {
-        let queue = LavalinkFunctions.getCurrentQueue(client.config.LAVALINK.QUEUES, message.guild.id);
+        let queue = getCurrentQueue(client.config.LAVALINK.QUEUES, message.guild.id);
         if (!client.player.get(message.guild.id)) { return message.channel.send('❌ Le bot n\'est actuellement pas connecté dans un salon vocal.'); }
         if (queue.length > 0) { queue.splice(0, queue.length); }
             try {
