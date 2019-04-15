@@ -1,7 +1,7 @@
 'use strict';
 
 const Command = require('../structures/Command');
-const LavalinkFunctions = require('../utils/helpers/lavalink');
+const { getCurrentQueue } = require('../utils/helpers/lavalink');
 
 class Skip extends Command {
     constructor() {
@@ -17,7 +17,7 @@ class Skip extends Command {
 
     // eslint-disable-next-line no-unused-vars
     async run(client, message, _args) {
-        let queue = LavalinkFunctions.getCurrentQueue(client.config.LAVALINK.QUEUES, message.guild.id);
+        let queue = getCurrentQueue(client.config.LAVALINK.QUEUES, message.guild.id);
         let player = client.player.get(message.guild.id);
         if (!player) { return message.channel.send('❌ Le bot n\'est actuellement pas connecté dans un salon vocal.'); }
             message.channel.send('⏩ Passage en cours...')
