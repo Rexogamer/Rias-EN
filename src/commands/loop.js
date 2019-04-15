@@ -16,7 +16,7 @@ class Loop extends Command {
     }
 
     // eslint-disable-next-line no-unused-vars
-    async run(client, message, _args) {
+    run(client, message, _args) {
         let queue = LavalinkFunctions.getCurrentQueue(client.config.LAVALINK.QUEUES, message.guild.id);
         const player = client.player.get(message.guild.id);
         if (!player) { return message.channel.send('❌ Le bot ne joue actuellement pas.'); }
