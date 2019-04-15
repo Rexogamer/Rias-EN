@@ -22,10 +22,12 @@ module.exports.getCurrentQueue = (queues, guildID) => {
     return queues[guildID];
 };
 
-module.exports.play = (client, message) => {
+module.exports.play = async(client, message) => {
     try {
         let queue = this.getCurrentQueue(client.config.LAVALINK.QUEUES, message.guild.id);
-        if (queue.length === 0) { return client.player.leave(message.guild.id); }
+        if (queue.length === 0) {
+            return client.player.leave(message.guild.id);
+        }
             const player = client.player.get(message.guild.id);
             let currentTrack = queue[0];
             if (!player) { return message.channel.send('❌ Le bot n\'est pas connnecté.'); }
@@ -37,19 +39,19 @@ module.exports.play = (client, message) => {
                 });
                 player.once('end', (data) => {
                     if (data.reason === 'REPLACED') { return; }
-                        queue.shift();
-                        if (data.reason === 'STOPPED' && queue.length === 0) { return message.channel.send('La file d\'attente est terminée. 👌'); }
-                            this.play(client, message);
+                        if (!currentTrack.loop) { queue.shift(); }
+                            if (data.reason === 'STOPPED' && queue.length === 0) { return message.channel.send('La file d\'attente est terminée. 👌'); }
+                                this.play(client, message);
                 });
     } catch (exception) {
         if (exception) { return message.channel.send('❌ Une erreur est survenue, nous sommes désolé. Essayez plus tard.\n```JS\n' + exception.message + '```'); }
     }
 };
 
-
 module.exports.addToQueue = async(client, message, track) => {
     try {
         let queue = this.getCurrentQueue(client.config.LAVALINK.QUEUES, message.guild.id);
+
         if (track.startsWith('https://www.youtube.com/playlist?list=')) {
             const songs = await this.getSongs(client.player, `${track}`);
             if (!songs) { return message.channel.send('❌ Aucune musique de trouvé !'); }
@@ -57,6 +59,7 @@ module.exports.addToQueue = async(client, message, track) => {
                     queue.push({
                         track: songs[i].track,
                         author: message.author.tag,
+                        loop: false,
                         info: {
                             identifier: songs[i].info.identifier,
                             title: songs[i].info.title,
@@ -68,13 +71,14 @@ module.exports.addToQueue = async(client, message, track) => {
                         }
                     });
                 }
-                message.channel.send('☑ **' + songs.length + '** musique(s) ont été ajoutées à la queue !');
+                message.channel.send('☑ **' + songs.length + '** musique(s) ont/a été ajoutée(s) à la file d\'attente !');
         } else {
             const [song] = await this.getSongs(client.player, `ytsearch: ${track}`);
             if (!song) { return message.channel.send('❌ Aucune musique de trouvé !'); }
                 queue.push({
                     track: song.track,
                     author: message.author.tag,
+                    loop: false,
                     info: {
                         identifier: song.info.identifier,
                         title: song.info.title,
@@ -85,7 +89,7 @@ module.exports.addToQueue = async(client, message, track) => {
                         seekable: song.info.isSeekable
                     }
                 });
-                if (queue.length > 1) { return message.channel.send('☑ **' + song.info.title + '** a été ajouté avec succès à la queue !'); }
+                if (queue.length > 1) { return message.channel.send('☑ **' + song.info.title + '** a été ajouté avec succès à la file d\'attente !'); }
         }
             return this.play(client, message);
     } catch (exception) {
