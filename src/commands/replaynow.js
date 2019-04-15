@@ -25,11 +25,14 @@ class Replaynow extends Command {
                 .then((m) => {
                     m.delete();
                     try {
-                        queue[0].loop = true;
-                        player.stop();
-                        setTimeout(() => {
-                            queue[0].loop = false;
-                        }, 1000)
+                        if (queue[0].loop) { player.stop(); }
+                        else {
+                            queue[0].loop = true;
+                            player.stop();
+                            setTimeout(() => {
+                                queue[0].loop = false;
+                            }, 1000)
+                        }
                     } catch (exception) {
                         if (exception) { return message.channel.send('❌ Une erreur est survenue, nous sommes désolé. Essayez plus tard.\n```JS\n' + exception.message + '```'); }
                     }
