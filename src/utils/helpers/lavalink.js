@@ -28,21 +28,21 @@ module.exports.play = async(client, message) => {
         if (queue.length === 0) {
             return client.player.leave(message.guild.id);
         }
-            const player = client.player.get(message.guild.id);
-            let currentTrack = queue[0];
-            if (!player) { return message.channel.send('❌ Le bot n\'est pas connnecté.'); }
-                message.channel.send(`🎶 Nouvelle lecture: **${currentTrack.info.title}** par **${currentTrack.info.author}**. 🎶`);
+        const player = client.player.get(message.guild.id);
+        let currentTrack = queue[0];
+        if (!player) { return message.channel.send('❌ Le bot n\'est pas connnecté.'); }
+            message.channel.send(`🎶 Nouvelle lecture: **${currentTrack.info.title}** par **${currentTrack.info.author}**. 🎶`);
 
-                player.play(currentTrack.track);
-                player.once('error', (error) => {
-                    if (error) { message.channel.send('❌ Une erreur est survenue, nous sommes désolé. Ressayez plus tard.\n```JS\n' + error.message + '```'); }
-                });
-                player.once('end', (data) => {
-                    if (data.reason === 'REPLACED') { return; }
-                        if (!currentTrack.loop) { queue.shift(); }
-                            if (data.reason === 'STOPPED' && queue.length === 0) { return message.channel.send('La file d\'attente est terminée. 👌'); }
-                                this.play(client, message);
-                });
+            player.play(currentTrack.track);
+            player.once('error', (error) => {
+                if (error) { message.channel.send('❌ Une erreur est survenue, nous sommes désolé. Ressayez plus tard.\n```JS\n' + error.message + '```'); }
+            });
+            player.once('end', (data) => {
+                if (data.reason === 'REPLACED') { return; }
+                    if (!currentTrack.loop) { queue.shift(); }
+                        if (data.reason === 'STOPPED' && queue.length === 0) { return message.channel.send('La file d\'attente est terminée. 👌'); }
+                            this.play(client, message);
+            });
     } catch (exception) {
         if (exception) { return message.channel.send('❌ Une erreur est survenue, nous sommes désolé. Essayez plus tard.\n```JS\n' + exception.message + '```'); }
     }
@@ -71,7 +71,8 @@ module.exports.addToQueue = async(client, message, track) => {
                         }
                     });
                 }
-                message.channel.send('☑ **' + songs.length + '** musique(s) ont/a été ajoutée(s) à la file d\'attente !');
+            if (queue.length > songs.length) { return message.channel.send('☑ **' + songs.length + '** musique(s) ont/a été ajoutée(s) à la file d\'attente !'); }
+            else { message.channel.send('☑ **' + songs.length + '** musique(s) ont/a été ajoutée(s) à la file d\'attente !'); }
         } else {
             const [song] = await this.getSongs(client.player, `ytsearch: ${track}`);
             if (!song) { return message.channel.send('❌ Aucune musique de trouvé !'); }
