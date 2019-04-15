@@ -1,7 +1,7 @@
 'use strict';
 
 const Command = require('../structures/Command');
-const LavalinkFunctions = require('../utils/helpers/lavalink');
+const { getCurrentQueue } = require('../utils/helpers/lavalink');
 
 class Loop extends Command {
     constructor() {
@@ -17,7 +17,7 @@ class Loop extends Command {
 
     // eslint-disable-next-line no-unused-vars
     run(client, message, _args) {
-        let queue = LavalinkFunctions.getCurrentQueue(client.config.LAVALINK.QUEUES, message.guild.id);
+        let queue = getCurrentQueue(client.config.LAVALINK.QUEUES, message.guild.id);
         const player = client.player.get(message.guild.id);
         if (!player) { return message.channel.send('❌ Le bot ne joue actuellement pas.'); }
         if (queue.length === 0) { return message.channel.send('❌ La queue est vide.'); }
