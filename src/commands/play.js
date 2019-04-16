@@ -20,14 +20,18 @@ class Play extends Command {
             const player = client.player.get(message.guild.id);
             const track = args.join(' ');
             if (!track) { return message.channel.send('❌ Vous devez spécifier un nom de musique.'); }
-            if (!player) {
-                client.player.join({
-                    guild: message.guild.id,
-                    channel: message.member.voiceChannel.id,
-                    host: client.player.nodes.first().host
-                }, { selfdeaf: true });
-            }
-                addToQueue(client, message, track);
+                try {
+                    if (!player) {
+                        client.player.join({
+                            guild: message.guild.id,
+                            channel: message.member.voiceChannel.id,
+                            host: client.player.nodes.first().host
+                        }, { selfdeaf: true });
+                    }
+                        addToQueue(client, message, track);
+                } catch (exception) {
+                    if (exception) { return message.channel.send('❌ Une erreur est survenue, nous sommes désolé. Essayez plus tard.\n```JS\n' + exception.message + '```'); }
+                }
     }
 }
 
