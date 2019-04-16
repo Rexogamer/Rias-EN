@@ -19,7 +19,7 @@ class Queue extends Command {
     run(client, message, _args) {
         let queue = getCurrentQueue(client.config.LAVALINK.QUEUES, message.guild.id);
         if (!client.player.get(message.guild.id)) { return message.channel.send('❌ Le bot n\'est actuellement pas connecté dans un salon vocal.'); }
-        if (queue.length === 0) { return message.channel.send('❌ La queue est vide.'); }
+        if (queue.length === 0) { return message.channel.send('❌ La file d\'attente est vide.'); }
             let text = queue.slice(0, 15).map((song, i) => (i > 0 && i < 15 ? '[**' + i + '**] - **' + song.info.title + '**' + ' - Ajouté par **' + song.author + '**' : null)).join('\n');
             message.channel.send('Voici la liste des musiques en attente du serveur:\n\n' + (queue.length === 1 ? '**La queue est vide !**' : text + (queue.length > 15 ? '\n\nEt plus encore...' : '')) + '\n\nLecture actuelle: **' + queue[0].info.title + '** - Ajouté par **' + queue[0].author + '**')
                 .catch((err) => {
