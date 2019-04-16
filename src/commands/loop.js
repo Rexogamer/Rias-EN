@@ -20,7 +20,7 @@ class Loop extends Command {
         let queue = getCurrentQueue(client.config.LAVALINK.QUEUES, message.guild.id);
         const player = client.player.get(message.guild.id);
         if (!player) { return message.channel.send('❌ Le bot ne joue actuellement pas.'); }
-        if (queue.length === 0) { return message.channel.send('❌ La queue est vide.'); }
+        if (queue.length === 0) { return message.channel.send('❌ La file d\'attente est vide.'); }
             if (!queue[0].loop) {
                 queue[0].loop = true;
                 return message.channel.send('🔁 L\'option boucle est activée, le bot va répéter la musique indéfiniment.');
