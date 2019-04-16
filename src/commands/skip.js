@@ -16,7 +16,7 @@ class Skip extends Command {
     }
 
     // eslint-disable-next-line no-unused-vars
-    async run(client, message, _args) {
+    run(client, message, _args) {
         let queue = getCurrentQueue(client.config.LAVALINK.QUEUES, message.guild.id);
         let player = client.player.get(message.guild.id);
         if (!player) { return message.channel.send('❌ Le bot n\'est actuellement pas connecté dans un salon vocal.'); }
