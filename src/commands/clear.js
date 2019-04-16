@@ -19,7 +19,7 @@ class Clear extends Command {
     run(client, message, _args) {
         let queue = getCurrentQueue(client.config.LAVALINK.QUEUES, message.guild.id);
         if (!client.player.get(message.guild.id)) { return message.channel.send('❌ Le bot n\'est actuellement pas connecté dans un salon vocal.'); }
-        if (queue.length === 0) { return message.channel.send('⚠ La queue est vide.'); }
+        if (queue.length === 0) { return message.channel.send('⚠ La file d\'attente est vide.'); }
         else if (queue.length !== 1) { queue.splice(1, queue.length); }
             message.channel.send('✅ La file d\'attente a bien été supprimée.');
     }
