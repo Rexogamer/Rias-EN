@@ -22,7 +22,7 @@ class Nowplaying extends Command {
         let queue = getCurrentQueue(client.config.LAVALINK.QUEUES, message.guild.id);
         const player = client.player.get(message.guild.id);
         if (!player) { return message.channel.send('❌ Le bot ne joue actuellement pas.'); }
-        if (queue.length === 0) { return message.channel.send('❌ La queue est vide.'); }
+        if (queue.length === 0) { return message.channel.send('❌ La file d\'attente est vide.'); }
         try {
             let duration = moment.duration({ ms: client.config.LAVALINK.QUEUES[message.guild.id][0].info.duration });
             let progression = moment.duration({ ms: client.player.get(message.guild.id).state.position * 1000 });
