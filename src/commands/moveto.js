@@ -8,7 +8,7 @@ class Moveto extends Command {
         super();
         this.help = {
             name: 'moveto',
-            description: 'Faire rejoindre le bot dans un salon-vocal',
+            description: 'Faire rejoindre le bot dans un autre salon-vocal',
             category: 'Music',
             usage: 'moveto',
             aliases: []
