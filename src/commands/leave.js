@@ -8,7 +8,7 @@ class Leave extends Command {
         super();
         this.help = {
             name: 'leave',
-            description: 'Sortir le bot du salon vocal',
+            description: 'Sortir le bot du salon-vocal',
             category: 'Music',
             usage: 'leave',
             aliases: []
