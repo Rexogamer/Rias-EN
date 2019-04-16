@@ -16,10 +16,10 @@ class Join extends Command {
     }
 
     // eslint-disable-next-line no-unused-vars
-    async run(client, message, _args) {
+    run(client, message, _args) {
         if (!message.member || !message.member.voiceChannel) { return message.channel.send('❌ Vous devez être connecté dans un salon vocal pour faire cette commande.'); }
         try {
-            await client.player.join({
+            client.player.join({
                 guild: message.guild.id,
                 channel: message.member.voiceChannel.id,
                 host: client.player.nodes.first().host
