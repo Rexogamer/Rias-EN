@@ -93,9 +93,10 @@ module.exports.addToQueue = async(client, message, track) => {
                     const filter = (m) => m.author.id === message.author.id;
                     const collector = new MessageCollector(message.channel, filter, { time: 20000 });
                     collector.on('collect', (msgCollected) => {
+                        if (
                         let choice = msgCollected.content.split(' ')[0];
                         if (choice.toLowerCase() === 'cancel') { return collector.stop('STOPPED'); }
-                        if (isNaN(choice)) { return message.channel.send('❌ Ce choix n\'est pas valide.'); }
+                        if (!choice || isNaN(choice)) { return message.channel.send('❌ Ce choix n\'est pas valide.'); }
                         if (choice > songs.length || choice <= 0) { return message.channel.send('❌ Ce choix ne fait pas parti de la selection.'); }
                             let song = songs[(choice-1)];
                             collector.stop('PLAY');
