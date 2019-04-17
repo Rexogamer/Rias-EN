@@ -10,7 +10,7 @@ class Join extends Command {
             name: 'join',
             description: 'Faire rejoindre le bot dans un salon-vocal',
             category: 'Music',
-            usage: 'join',
+            usage: 'join [salon]',
             aliases: []
         };
     }
