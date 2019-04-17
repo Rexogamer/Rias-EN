@@ -10,7 +10,7 @@ class Moveto extends Command {
             name: 'moveto',
             description: 'Faire rejoindre le bot dans un autre salon-vocal',
             category: 'Music',
-            usage: 'moveto',
+            usage: 'moveto [salon]',
             aliases: []
         };
     }
