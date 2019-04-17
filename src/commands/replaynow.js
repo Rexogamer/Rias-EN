@@ -8,7 +8,7 @@ class Replaynow extends Command {
         super();
         this.help = {
             name: 'replaynow',
-            description: 'Remettre la lecture actuelle à 0',
+            description: 'Re-mettre la lecture actuelle à 0',
             category: 'Music',
             usage: 'replaynow',
             aliases: []
