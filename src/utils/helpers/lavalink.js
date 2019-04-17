@@ -95,7 +95,7 @@ module.exports.addToQueue = async(client, message, track) => {
                     collector.on('collect', (msgCollected) => {
                         let choice = msgCollected.content.split(' ')[0];
                         if (choice.toLowerCase() === 'cancel') { return collector.stop('STOPPED'); }
-                        if (!choice || isNaN(choice)) { return message.channel.send('❌ Ce choix n\'est pas valide.'); }
+                        if (isNaN(choice)) { return message.channel.send('❌ Ce choix n\'est pas valide.'); }
                         if (choice > songs.length || choice <= 0) { return message.channel.send('❌ Ce choix ne fait pas parti de la selection.'); }
                             let song = songs[(choice-1)];
                             collector.stop('PLAY');
