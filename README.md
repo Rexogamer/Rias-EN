@@ -37,9 +37,9 @@ pm2 start java --name="Lavalink" -- -jar Lavalink.jar
 ## Images
 
 <p align="center">
-   <img src="https://cdn.discordapp.com/attachments/459373842327011344/564956932604035102/unknown.png" />
+   <img src="https://cdn.discordapp.com/attachments/459373842327011344/568059066241515520/unknown.png" />
    <br/>
-   <img src="https://cdn.discordapp.com/attachments/459373842327011344/564918084377247796/unknown.png" />
+   <img src="https://cdn.discordapp.com/attachments/459373842327011344/568059555989159957/unknown.png" />
    <br/>
-   <img src="https://cdn.discordapp.com/attachments/459373842327011344/564918376237891584/unknown.png" />
+   <img src="https://cdn.discordapp.com/attachments/459373842327011344/568059855122858009/unknown.png" />
 </p>
