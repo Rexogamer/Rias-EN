@@ -17,7 +17,7 @@ class Seek extends Command {
         };
     }
 
-    async run(client, message, args) {
+    run(client, message, args) {
         const query = args.join(' ');
         const player = client.player.get(message.guild.id);
         let time = client.config.LAVALINK.QUEUES[message.guild.id][0].info.duration;
@@ -25,7 +25,7 @@ class Seek extends Command {
         if (!query || isNaN(query)) { return message.channel.send('❌ Vous devez spécifier un nombre compris entre **1** et **' + (time / 1000) + '** pour modifier la position.'); }
         else if (query <= 0 || query > (time / 1000)) { return message.channel.send('❌ Vous devez spécifier un nombre compris entre **1** et **' + (time / 1000) + '** pour ajuster la position.'); }
         try {
-            let seek = await player.seek((query * 1000));
+            let seek = player.seek((query * 1000));
             let duration = moment.duration({ ms: time });
             let progression = moment.duration({ ms: ((query * 1000) * 1000) });
             return message.channel.send('⏩ La position est désormais à [`' + moment(progression/1000).minutes() + ':' + moment(progression/1000).seconds() + '`]/' + ' [`' + duration.minutes() + ':' + duration.seconds() + '`]');
