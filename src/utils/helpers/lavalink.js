@@ -22,7 +22,7 @@ module.exports.getCurrentQueue = (queues, guildID) => {
     return queues[guildID];
 };
 
-module.exports.play = async(client, message) => {
+module.exports.play = (client, message) => {
     try {
         let queue = this.getCurrentQueue(client.config.LAVALINK.QUEUES, message.guild.id);
         if (queue.length === 0) {
