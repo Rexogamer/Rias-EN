@@ -127,6 +127,9 @@ module.exports.addToQueue = async(client, message, track) => {
                         if (err) { return message.channel.send('❌ Une erreur est survenue, nous sommes désolé. Essayez plus tard.\n```JS\n' + err.message + '```'); }
                     });
             } else {
+                const [song] = await this.getSongs(client.player, `ytsearch: ${track}`);
+                if (!song) { return message.channel.send('❌ Aucune musique de trouvé !'); }
+                
                 queue.push({
                     track: song.track,
                     author: message.author.tag,
