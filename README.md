@@ -43,3 +43,13 @@ pm2 start java --name="Lavalink" -- -jar Lavalink.jar
    <br/>
    <img src="https://cdn.discordapp.com/attachments/459373842327011344/568059855122858009/unknown.png" />
 </p>
+
+## Widgets
+
+<a href="https://discordbotlist.com/bots/564797479808139265">
+    <img 
+        width="380" 
+        height="140" 
+        src="https://discordbotlist.com/bots/564797479808139265/widget" 
+        alt="Rias stats on Discord Bot List">
+</a>
