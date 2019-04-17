@@ -28,7 +28,7 @@ class Seek extends Command {
                 let seek = player.seek((query * 1000));
                 let duration = moment.duration({ ms: time });
                 let progression = moment.duration({ ms: ((query * 1000) * 1000) });
-                return message.channel.send('⏩ La position est désormais à [`' + moment(progression/1000).minutes() + ':' + moment(progression/1000).seconds() + '`]/' + ' [`' + duration.minutes() + ':' + duration.seconds() + '`]');
+                return message.channel.send('⏩ La position est désormais à [`' + moment(progression/1000).minutes() + ':' + moment(progression/1000).seconds() + '`]/[`' + duration.minutes() + ':' + duration.seconds() + '`]');
             } catch (exception) {
                 if (exception) { return message.channel.send('❌ Une erreur est survenue, nous sommes désolé. Essayez plus tard.\n```JS\n' + exception.message + '```'); }
             }
