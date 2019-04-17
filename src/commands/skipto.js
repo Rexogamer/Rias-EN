@@ -10,7 +10,7 @@ class Skipto extends Command {
             name: 'skipto',
             description: 'Passer à une musique choisie dans la file d\'attente',
             category: 'Music',
-            usage: 'skipto',
+            usage: 'skipto <identifiant>',
             aliases: []
         };
     }
