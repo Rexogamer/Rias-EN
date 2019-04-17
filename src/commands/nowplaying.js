@@ -25,7 +25,7 @@ class Nowplaying extends Command {
         if (queue.length === 0) { return message.channel.send('❌ La file d\'attente est vide.'); }
         try {
             let duration = moment.duration({ ms: client.config.LAVALINK.QUEUES[message.guild.id][0].info.duration });
-            let progression = moment.duration({ ms: client.player.get(message.guild.id).state.position * 1000 });
+            let progression = moment.duration({ ms: player.state.position * 1000 });
             let progressBar = ['▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬', '▬'];
             let calcul = Math.round(progressBar.length * ((progression / 1000 / 1000) / (duration / 1000)));
             progressBar[calcul] = '🔘';
