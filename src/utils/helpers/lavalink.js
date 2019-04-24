@@ -35,8 +35,8 @@ module.exports.play = (client, message) => {
             message.channel.send(`🎶 Nouvelle lecture: **${currentTrack.info.title}** par **${currentTrack.info.author}**. 🎶`);
 
             player.play(currentTrack.track);
-            player.once('error', (error) => {
-                if (error) { message.channel.send('❌ Une erreur est survenue, nous sommes désolé. Ressayez plus tard.\n```JS\n' + error.message + '```'); }
+            player.once('error', (e) => {
+                if (e) { message.channel.send('❌ Une erreur est survenue, nous sommes désolé. Ressayez plus tard.\n```JS\n' + e.message + '```'); }
             });
             player.once('end', (data) => {
                 if (data.reason === 'REPLACED') { return; }
