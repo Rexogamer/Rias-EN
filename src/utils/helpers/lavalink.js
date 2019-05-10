@@ -53,7 +53,7 @@ module.exports.addToQueue = async(client, message, track) => {
     try {
         let queue = this.getCurrentQueue(client.config.LAVALINK.QUEUES, message.guild.id);
 
-        if (track.startsWith('https://www.youtube.com/playlist?list=')) {
+        if (track.startsWith('https://www.youtube.com/playlist?list=') || track.startsWith('https://open.spotify.com/playlist/')) {
             const songs = await this.getSongs(client.player, `${track}`);
             if (!songs) { return message.channel.send('❌ Aucune musique de trouvé !'); }
                 for (let i = 0; i < songs.length; i++) {
