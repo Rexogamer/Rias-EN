@@ -12,14 +12,14 @@ This is **Rias**, a music bot created by **Sworder**, translated by **Rexogamer*
 ## Installation 
 
 1) Install **Lavalink**.
-   - 1) Télécharger le serveur en [cliquant-ici](https://github.com/Frederikam/Lavalink/releases/download/3.2.0.3/Lavalink.jar).
-   - 2) Le mettre dans le **dossier** `lavalink` du bot.
+   - 1) Download the Lavalink server [here.](https://github.com/Frederikam/Lavalink/releases/download/3.2.0.3/Lavalink.jar)
+   - 2) Put it in the `lavalink` folder.
 2) Fill in `config.js`.
 3) Install the required dependencies using npm.
 ```
 npm install
 ```
-4) Démarrer le serveur **Lavalink**, voir comment faire en [cliquant-ici](#démarrer-le-serveur-lavalink).
+4) Start the Lavalink server (find out how [here.](#démarrer-le-serveur-lavalink)).
 5) Démarrer le fichier le bot avec le fichier `index.js`.
 - En utilisant **node**:
 ```
