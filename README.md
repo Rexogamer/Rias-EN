@@ -1,5 +1,5 @@
-# Lavalink Bot
-Alias **Rias**, bot musical créé par **Sworder** avec **Lavalink** et **Discord.js-lavalink**
+# Rias 
+This is **Rias**, a music bot created by **Sworder**, translated by **Rexogamer**, and made using **Lavalink** and **Discord.js-lavalink.**
 
 <a href="https://discordbotlist.com/bots/564797479808139265">
     <img 
@@ -11,11 +11,11 @@ Alias **Rias**, bot musical créé par **Sworder** avec **Lavalink** et **Discor
 
 ## Installation 
 
-1) Installer le serveur de **Lavalink**.
+1) Install **Lavalink**.
    - 1) Télécharger le serveur en [cliquant-ici](https://github.com/Frederikam/Lavalink/releases/download/3.2.0.3/Lavalink.jar).
    - 2) Le mettre dans le **dossier** `lavalink` du bot.
-2) Compléter le fichier `config.js`.
-3) Installer tout les paquets npm.
+2) Fill in `config.js`.
+3) Install the required dependencies using npm.
 ```
 npm install
 ```
