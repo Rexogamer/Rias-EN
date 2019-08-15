@@ -8,7 +8,7 @@ class Clear extends Command {
         super();
         this.help = {
             name: 'clear',
-            description: 'Vider la liste des musiques en attente',
+            description: 'Clears the music queue.',
             category: 'Music',
             usage: 'clear',
             aliases: []
