@@ -8,9 +8,9 @@ class Join extends Command {
         super();
         this.help = {
             name: 'join',
-            description: 'Faire rejoindre le bot dans un salon-vocal',
+            description: 'Joins the bot to a voice channel.',
             category: 'Music',
-            usage: 'join [salon]',
+            usage: 'join [channel]',
             aliases: []
         };
     }
@@ -19,24 +19,24 @@ class Join extends Command {
         const query = args.join(' ');
         const player = client.player.get(message.guild.id);
         let channel;
-        if (!message.member || !message.member.voiceChannel) { return message.channel.send('❌ Vous devez être connecté dans un salon vocal pour faire cette commande.'); }
-        if (!message.member.voiceChannel && !query) { return message.channel.send('❌ Vous devez spécifier un salon !'); }
+        if (!message.member || !message.member.voiceChannel) { return message.channel.send('❌ You must be in a voice channel to use this command!'); }
+        if (!message.member.voiceChannel && !query) { return message.channel.send('❌ You must specify a voice channel!'); }
         else if (query) {
             channel = message.guild.channels.filter((c) => c.type === 'voice').find((c) => c.name.toLowerCase() === query.toLowerCase() || c.id === query);
-            if (!channel) { return message.channel.send('❌ Aucun salon trouvé !'); }
+            if (!channel) { return message.channel.send('❌ No channel found!'); }
         }
         else if (message.member.voiceChannel) { channel = message.member.voiceChannel; }
-        else { return message.channel.send('❌ Aucun salon trouvé !'); }
-        if (player) { return message.channel.send('❌ Le bot est déjà connecté dans un salon vocal.'); }
+        else { return message.channel.send('❌ No channel found!'); }
+        if (player) { return message.channel.send('❌ The bot is already in a voice channel!'); }
             try {
                 client.player.join({
                     guild: message.guild.id,
                     channel: channel.id,
                     host: client.player.nodes.first().host
                 }, { selfdeaf: true });
-                return message.channel.send('Le bot a bien rejoint le salon **' + channel.toString() + '**. 👌');
+                return message.channel.send('Joined the voice channel. **' + channel.toString() + '**. 👌');
             } catch (exception) {
-                if (exception) { return message.channel.send('❌ Une erreur est survenue, nous sommes désolé. Essayez plus tard.\n```JS\n' + exception.message + '```'); }
+                if (exception) { return message.channel.send('❌ An error occurred.\n```JS\n' + exception.message + '```'); }
             }
     }
 }
