@@ -10,7 +10,7 @@ class Nowplaying extends Command {
         super();
         this.help = {
             name: 'nowplaying',
-            description: 'Voir les informations de la musique en lecture',
+            description: 'Shows information about the current song.',
             category: 'Music',
             usage: 'nowplaying',
             aliases: ['np']
@@ -21,8 +21,8 @@ class Nowplaying extends Command {
     run(client, message, _args) {
         let queue = getCurrentQueue(client.config.LAVALINK.QUEUES, message.guild.id);
         const player = client.player.get(message.guild.id);
-        if (!player) { return message.channel.send('❌ Le bot ne joue actuellement pas.'); }
-        if (queue.length === 0) { return message.channel.send('❌ La file d\'attente est vide.'); }
+        if (!player) { return message.channel.send('❌ Nothing is currently playing!'); }
+        if (queue.length === 0) { return message.channel.send('❌ The queue is empty.'); }
         try {
             let duration = moment.duration({ ms: client.config.LAVALINK.QUEUES[message.guild.id][0].info.duration });
             let progression = moment.duration({ ms: player.state.position * 1000 });
@@ -32,7 +32,7 @@ class Nowplaying extends Command {
 
             return message.channel.send({
                 embed: {
-                    title: '🎶 Lecture actuelle 🎶',
+                    title: '🎶 Song info 🎶',
                     description: '[' + queue[0].info.title + '](' + queue[0].info.url + ')',
                     fields: [
                         {
