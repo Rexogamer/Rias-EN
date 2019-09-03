@@ -8,7 +8,7 @@ class Join extends Command {
         super();
         this.help = {
             name: 'join',
-            description: 'Joins the bot to a voice channel.',
+            description: 'Adds the bot to a voice channel.',
             category: 'Music',
             usage: 'join [channel]',
             aliases: []
