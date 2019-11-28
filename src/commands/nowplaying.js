@@ -41,7 +41,7 @@ class Nowplaying extends Command {
                             inline: false
                         },
                         {
-                            name: 'Durée:',
+                            name: 'Duration:',
                             value: '[`' + moment(progression/1000).minutes() + ':' + moment(progression/1000).seconds() + '`] ' + progressBar.join('') +  ' [`' + duration.minutes() + ':' + duration.seconds() + '`]',
                             inline: false
                         }
@@ -49,7 +49,7 @@ class Nowplaying extends Command {
                 }
             });
         } catch (exception) {
-            if (exception) { return message.channel.send('❌ Une erreur est survenue, nous sommes désolé. Essayez plus tard.\n```JS\n' + exception.message + '```'); }
+            if (exception) { return message.channel.send("❌ I'm sorry, but an error occured.\n```JS\n" + exception.message + '```'); }
         }
     }
 }
