@@ -8,7 +8,7 @@ class Leave extends Command {
         super();
         this.help = {
             name: 'leave',
-            description: 'Sortir le bot du salon-vocal',
+            description: 'Disconnects the bot from a voice channel.',
             category: 'Music',
             usage: 'leave',
             aliases: []
@@ -18,13 +18,13 @@ class Leave extends Command {
     // eslint-disable-next-line no-unused-vars
     run(client, message, _args) {
         let queue = getCurrentQueue(client.config.LAVALINK.QUEUES, message.guild.id);
-        if (!client.player.get(message.guild.id)) { return message.channel.send('❌ Le bot n\'est actuellement pas connecté dans un salon vocal.'); }
+        if (!client.player.get(message.guild.id)) { return message.channel.send("❌ The bot isn't currently in a voice channel."); }
         if (queue.length > 0) { queue.splice(0, queue.length); }
             try {
                 client.player.leave(message.guild.id);
-                return message.channel.send('Le bot a bien quitté le salon vocal. 👌');
+                return message.channel.send('The bot has left the voice channel. 👌');
             } catch (exception) {
-                if (exception) { return message.channel.send('❌ Une erreur est survenue, nous sommes désolé. Essayez plus tard.\n```JS\n' + exception.message + '```'); }
+                if (exception) { return message.channel.send("❌ I'm sorry, but an error occured.\n```JS\n" + exception.message + '```'); }
             }
     }
 }
