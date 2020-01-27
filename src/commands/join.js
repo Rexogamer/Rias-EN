@@ -36,7 +36,7 @@ class Join extends Command {
                 }, { selfdeaf: true });
                 return message.channel.send('Joined the voice channel. **' + channel.toString() + '**. 👌');
             } catch (exception) {
-                if (exception) { return message.channel.send('❌ An error occurred.\n```JS\n' + exception.message + '```'); }
+                if (exception) { return message.channel.send("❌ I'm sorry, but an error occured.\n```JS\n" + exception.message + '```'); }
             }
     }
 }
