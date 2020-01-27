@@ -24,7 +24,7 @@ class Leave extends Command {
                 client.player.leave(message.guild.id);
                 return message.channel.send('The bot has left the voice channel. 👌');
             } catch (exception) {
-                if (exception) { return message.channel.send("❌ I'm sorry, but an error occured.\n```JS\n" + exception.message + '```'); }
+                if (exception) { return message.channel.send("❌ I'm sorry, but an error occurred.\n```JS\n" + exception.message + '```'); }
             }
     }
 }
