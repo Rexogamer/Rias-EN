@@ -36,7 +36,7 @@ class Nowplaying extends Command {
                     description: '[' + queue[0].info.title + '](' + queue[0].info.url + ')',
                     fields: [
                         {
-                            name: 'Chaîne:',
+                            name: 'Author:',
                             value: queue[0].info.author,
                             inline: false
                         },
