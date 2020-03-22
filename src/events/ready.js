@@ -6,7 +6,7 @@ module.exports = class Ready extends Event {
 
   async run(client) {
     if(!client.user.bot) { return process.exit(0); }
-    client.user.setPresence({ game: { name: `${client.config.BOT.PREFIX}help pour voir mes commandes !` } });
+    client.user.setPresence({ game: { name: `${client.config.BOT.PREFIX}help to view a list of commands!` } });
 
 
     await new Promise((resolve) => setTimeout(resolve, 1000));
